@@ -62,7 +62,7 @@ public class MedicalServiceTest {
     public void medicalService_whenCheckTemperatureOrCheckPressureIsNormal_thenMessageNoSend() {
         MedicalService medicalService = new MedicalServiceImpl(patientInfoRepository, sendAlertService);
         medicalService.checkTemperature("1", BigDecimal.valueOf(36.6));
-        //medicalService.checkBloodPressure("1",new BloodPressure(120, 80));
+        medicalService.checkBloodPressure("1",new BloodPressure(120, 80));
 
         Mockito.verify(sendAlertService, Mockito.times(0)).send("Warning, patient with id: 1, need help");
     }
